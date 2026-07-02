@@ -1,0 +1,49 @@
+// 响应式断点 mixin
+.mobile(@rules) {
+  @media (max-width: @bp-mobile) { @rules(); }
+}
+
+.tablet(@rules) {
+  @media (min-width: (@bp-mobile + 1)) and (max-width: @bp-tablet) { @rules(); }
+}
+
+.mobile-tablet(@rules) {
+  @media (max-width: @bp-tablet) { @rules(); }
+}
+
+.desktop(@rules) {
+  @media (min-width: (@bp-tablet + 1)) { @rules(); }
+}
+
+// 容器
+.container() {
+  max-width: @container-max;
+  margin: 0 auto;
+  padding: 0 @spacing-lg;
+}
+
+.container-narrow() {
+  max-width: @container-narrow;
+  margin: 0 auto;
+  padding: 0 @spacing-lg;
+}
+
+// 文字截断
+.text-ellipsis() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// flex 居中
+.flex-center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between() {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

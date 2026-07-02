@@ -1,0 +1,157 @@
+// === 暗色网格背景（科技感）===
+.bg-grid-dark() {
+  background-image:
+    linear-gradient(fade(@color-border-dark, 8%) 1px, transparent 1px),
+    linear-gradient(90deg, fade(@color-border-dark, 8%) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.bg-grid-light() {
+  background-image:
+    linear-gradient(@color-border 1px, transparent 1px),
+    linear-gradient(90deg, @color-border 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+// 页面区块
+.section {
+  padding: @spacing-4xl 0;
+  .mobile-tablet({ padding: @spacing-3xl 0; });
+}
+
+.section-dark {
+  background: @color-dark;
+  color: @color-text-on-dark;
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute; inset: 0;
+    .bg-grid-dark();
+    pointer-events: none;
+  }
+}
+
+.section-light {
+  background: @color-surface-light;
+}
+
+.section-wood {
+  background: @color-white;
+}
+
+// 玻璃卡片
+.card-glass {
+  background: fade(@color-white, 80%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid fade(@color-border, 50%);
+  border-radius: @radius-lg;
+}
+.card-dark {
+  background: @color-surface;
+  border: 1px solid @color-border-dark;
+  border-radius: @radius-lg;
+}
+
+// 按钮
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: @spacing-sm;
+  padding: 10px @spacing-xl;
+  background: @color-primary;
+  color: @color-white;
+  border: none;
+  border-radius: @radius-md;
+  font-size: @font-size-sm;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: @transition-base;
+  box-shadow: @shadow-sm;
+  &:hover {
+    background: @color-primary-dark;
+    transform: translateY(-1px);
+    box-shadow: @shadow-glow;
+  }
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: @spacing-sm;
+  padding: 10px @spacing-xl;
+  background: transparent;
+  color: @color-white;
+  border: 1.5px solid fade(@color-white, 60%);
+  border-radius: @radius-md;
+  font-size: @font-size-sm;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: @transition-base;
+  &:hover {
+    background: fade(@color-white, 10%);
+    border-color: @color-white;
+    transform: translateY(-1px);
+  }
+}
+
+// 渐变文字
+.gradient-text {
+  background: linear-gradient(135deg, @color-primary, @color-primary-light);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// 容器（与 mixins.less 中的 mixin 同名，输出实际 CSS）
+.container {
+  max-width: @container-max;
+  margin: 0 auto;
+  padding: 0 @spacing-lg;
+}
+.container-narrow {
+  max-width: @container-narrow;
+  margin: 0 auto;
+  padding: 0 @spacing-lg;
+}
+
+// 滚动动画 — 用 CSS animation 替代 js observer 方案
+.scroll-reveal {
+  animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  &.visible {
+    animation: none;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+// 通用卡片 hover
+.card-hover {
+  transition: @transition-base;
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: @shadow-lg;
+  }
+}
+
+// 徽章
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  font-size: @font-size-xs;
+  font-weight: 500;
+  border-radius: @radius-full;
+  background: fade(@color-primary, 10%);
+  color: @color-primary;
+}
