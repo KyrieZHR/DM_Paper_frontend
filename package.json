@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite --port 3000",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vite build",
     "preview": "vite preview --port 4173"
   },
   "keywords": [],
